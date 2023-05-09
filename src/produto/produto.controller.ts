@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 
-import { AtualizaProdutoDTO } from './dto/atualizaProduto.dto';
+import { AtualizaProdutoDTO } from './dto/AtualizaProduto.dto';
 import { CriaProdutoDTO } from './dto/CriaProduto.dto';
 import { ProdutoEntity } from './produto.entity';
 import { ProdutoRepository } from './produto.repository';
@@ -29,8 +29,8 @@ export class ProdutoController {
     produto.quantidade = dadosProduto.quantidade;
     produto.descricao = dadosProduto.descricao;
     produto.categoria = dadosProduto.categoria;
-    produto.caracteristicas = dadosProduto.caracteristicas;
-    produto.imagens = dadosProduto.imagens;
+    //produto.caracteristicas = dadosProduto.caracteristicas;
+    //produto.imagens = dadosProduto.imagens;
 
     const produtoCadastrado = this.produtoRepository.salva(produto);
     return produtoCadastrado;
