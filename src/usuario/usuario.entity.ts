@@ -6,6 +6,7 @@ import {
     DeleteDateColumn,
     PrimaryGeneratedColumn
 } from 'typeorm'
+import { v4 as uuid } from 'uuid';
 
 @Entity({ name: 'usuarios' })
 export class UsuarioEntity {
@@ -14,6 +15,7 @@ export class UsuarioEntity {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.id = uuid()
     }
 
     @PrimaryGeneratedColumn('uuid')

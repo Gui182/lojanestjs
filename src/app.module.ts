@@ -1,20 +1,14 @@
 import { Module } from '@nestjs/common';
-import { UsuarioModule } from './usuario/usuario.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PostGresConfigService } from './config/postgres.config.service';
-import { ConfigModule } from '@nestjs/config';
+import { dataSourceOption } from './config/data-source';
 import { ProdutoModule } from './produto/produto.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
     UsuarioModule,
     ProdutoModule,
-    ConfigModule.forRoot({
-      isGlobal: true
-    }), 
-    TypeOrmModule.forRootAsync({
-    useClass: PostGresConfigService,
-    inject: [PostGresConfigService]
-  })],
+    TypeOrmModule.forRoot(dataSourceOption),
+    ],
 })
 export class AppModule {}
